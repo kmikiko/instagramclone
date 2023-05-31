@@ -25,9 +25,19 @@ class PostsController < ApplicationController
     render :new if @post.invalid?
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
+  def edit
+
+  end
+
   private
 
   def posts_params
     params.require(:post).permit(:content, :image, :image_cache)
   end
+
+  
 end
