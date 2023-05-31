@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
-  resources :posts
   root to: 'home#index'
+  resources :posts do
+    collection do
+      post :confirm
+    end
+  end
 end

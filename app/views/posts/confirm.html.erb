@@ -1,0 +1,9 @@
+<h1>投稿内容を確認</h1>
+<%= form_with(model:@post, local: true, url: posts_path) do |form|%>
+  <%= @post.content %>
+  <%= form.hidden_field :content %>
+  <%= form.submit "シェア" %>
+<% end %>
+<%= form_with(model:@post, local: true, url: new_post_path) do |form|%>
+  <%= form.submit "戻る", name: "back" %>
+<% end %>
