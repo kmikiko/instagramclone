@@ -1,8 +1,9 @@
 <P>投稿</p>
 <table>
   <% @posts.each do |post| %>
-    <tr><td><%= post.user.name %></td> </tr>
+    <%# <tr><td><%= post.user.name %>
+    <%# </td> </tr> %> 
     <tr><td><h3><%= post.content %></h3></td></tr>
-    <%# <td><%= image_tag (post.image.url) if post.image && post.image.url</td>   %>
+    <td><%= image_tag (post.image.url) if post.image && post.image.url %></td>  
   <% end %>
 </table>
