@@ -25,6 +25,8 @@
 /public/assets
 .byebug_history
 
+# git rm --cached .env
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
