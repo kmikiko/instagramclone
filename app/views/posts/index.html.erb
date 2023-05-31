@@ -13,6 +13,9 @@
       <td>
         <h3><%= post.content %></h3>
       </td>
+      <td>
+        <p><%= link_to "edit", edit_post_path(post.id) %></p>
+      </td>
     </tr>
   <% end %>
 </table>

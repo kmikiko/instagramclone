@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: [:show, :update, :edit]
+
   def index
     @posts = Post.all
   end
@@ -26,11 +28,18 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   def edit
 
+  end
+
+  def update
+    if @post.update(posts_params)
+      redirect_to posts_path, notice: "編集しました！"
+    else
+      render :edit
+    end
   end
 
   private
@@ -39,5 +48,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(:content, :image, :image_cache)
   end
 
-  
+  def set_post
+    @post = Post.find(params[:id])
+  end
 end
