@@ -1,0 +1,11 @@
+<%= form_with(model: @post, local: true) do |form| %>
+  <h3>新規投稿</h3>
+  <div class="content">
+    <%= form.text_area :content %>
+  </div>
+  <div class="field">
+    <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
+  </div>
+  <%= form.submit "シェア"%>
+<% end %>
