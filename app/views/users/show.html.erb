@@ -3,3 +3,9 @@
 
 <p>メールアドレス: <%= @user.email %></p>
 
+<table>
+        <tr>
+          <td><%= link_to "home",posts_path %></td>
+          <td><%= link_to "➕", new_post_path %></td>
+        </tr>
+</table>
