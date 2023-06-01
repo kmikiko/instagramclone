@@ -1,11 +1,25 @@
-<h1><%= @user.name %></h1>
-<%# プロフィール画像 %>
-
-<p>メールアドレス: <%= @user.email %></p>
+<table>
+  <tr>
+    <td>
+      <p><%= image_tag @user.image.url, class: "rounded-circle", size: "50x50" %></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p><%= @user.name %></p>
+   </td>
+  </tr>
+  <tr> 
+    <td>
+      <p>メールアドレス: <%= @user.email %></p>
+   </td>
+  </tr>
+</table>
 
 <table>
         <tr>
           <td><%= link_to "home",posts_path %></td>
           <td><%= link_to "➕", new_post_path %></td>
+          <td><%= link_to "edit profile", edit_user_path %></td>
         </tr>
 </table>

@@ -6,6 +6,6 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
-  resources :users, only: [:new, :create, :show]
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :users, only: %i[new create show edit update]
+  resources :sessions, only: %i[new create destroy]
 end

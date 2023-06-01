@@ -1,10 +1,11 @@
 <p>投稿内容を確認</p>
-<%= form_with(model:@post, local: true, url: new_post_path) do |form|%>
+<%= form_with(model:@post, local: true, url: new_post_path, method:"get") do |form|%>
+  <%= form.hidden_field :image_cache %>
   <%= form.submit "戻る", name: "back" %>
 <% end %>
 <%= form_with(model:@post, local: true, url: posts_path) do |form|%>
   <table>
-    <tr><td><%= image_tag @post.image.url %></td></tr>
+    <tr><td><%= image_tag(@post.image.url) if @post.image && @post.image.url %></td></tr>
     <tr><td><%= @post.content %></td></tr>
     <%= form.hidden_field :content %>
     <%= form.hidden_field :image_cache %>

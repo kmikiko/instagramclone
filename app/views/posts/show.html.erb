@@ -1,2 +1,18 @@
+<table>
+  <tr>
+    <td>
+      <p><%= image_tag @post.user.image.url, class: "rounded-circle", size: "50x50" %><p>
+    </td>
+    <td>
+      <p><%= @post.user.name %><p>
+    </td>
+  </tr>
+</table>
 <p><%= image_tag @post.image.url %></p>
 <p><%= @post.content %></p>
+
+<table>
+        <tr>
+          <td><%= link_to "home",posts_path %></td>
+        </tr>
+</table>

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :update, :edit, :destroy]
-
+  before_action :limitation, only: [:update, :edit, :destroy]
   def index
     @posts = Post.all
   end
@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(posts_params)
+    @post = current_user.posts.build(posts_params)
     if @post.save
       redirect_to posts_path, notice:"投稿しました！"
     else
@@ -23,18 +23,19 @@ class PostsController < ApplicationController
   end
 
   def confirm
-    @post = Post.new(posts_params)
+    @post = current_user.posts.build(posts_params)
     render :new if @post.invalid?
   end
 
   def show
+    @post = Post.find(params[:id])
   end
 
   def edit
   end
 
   def update
-    if @post.update(posts_params)
+    if @post.update(posts_params) 
       redirect_to posts_path, notice: "編集しました！"
     else
       render :edit
@@ -55,4 +56,11 @@ class PostsController < ApplicationController
   def set_post
     @post = Post.find(params[:id])
   end
+
+  def limitation
+    if current_user.id != @post.id
+      redirect_to posts_path
+    end
+  end
+
 end
