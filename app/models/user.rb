@@ -8,4 +8,5 @@ class User < ApplicationRecord
   validates :image,  presence: true
   mount_uploader :image, ImageUploader
   has_many :posts
+  has_many :favorites, dependent: :destroy
 end

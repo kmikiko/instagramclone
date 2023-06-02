@@ -2,7 +2,9 @@
   <% @posts.each do |post| %>
     <tr>
       <td>
-        <p><%= image_tag post.user.image.url, class: "rounded-circle", size: "50x50" %><p>
+        <%= link_to user_path(post.user.id) do %>
+          <p><%= image_tag (post.user.image.url), class: "rounded-circle", size: "50x50" if post.user.image && post.user.image.url %><p>
+        <% end %>
       </td>
       <td>
         <p><%= post.user.name %><p>
@@ -11,7 +13,7 @@
     <tr>
       <td>
         <%= link_to post_path(post.id) do %>
-          <%= image_tag (post.image.url) if post.image && post.image.url %>
+          <%= image_tag (post.image.url),size: "200x200" if post.image && post.image.url %>
         <% end %>
       </td>
     </tr>

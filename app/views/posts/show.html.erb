@@ -8,11 +8,20 @@
     </td>
   </tr>
 </table>
-<p><%= image_tag @post.image.url %></p>
+<p><%= image_tag @post.image.url, size: "150x150" %></p>
 <p><%= @post.content %></p>
 
 <table>
         <tr>
           <td><%= link_to "home",posts_path %></td>
+          <td>
+            <% unless @post.user_id == current_user.id %>
+              <% if @favorite.present? %>
+                <%= link_to 'お気に入り解除', favorite_path(favorite_id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+              <% else %>
+                <%= link_to 'お気に入り', favorites_path(post_id: @post.id), method: :post, class: 'btn btn-primary' %>
+              <% end %>
+            <% end %>
+          </td>
         </tr>
 </table>
