@@ -15,6 +15,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(posts_params)
     if @post.save
+      PostMailer.post_mail(@post).deliver
       redirect_to posts_path, notice:"投稿しました！"
     else
       render :new
