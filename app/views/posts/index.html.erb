@@ -19,12 +19,17 @@
       <td>
         <h3><%= post.content %></h3>
       </td>
-      <td>
-        <p><%= link_to "edit", edit_post_path(post.id) %></p>
-      </td>
-      <td>
-        <p><%= link_to 'delete', post_path(post.id), method: :delete ,data: { confirm: '削除していいですか？' } %></p>
-      </td>
+      <% if post.user == current_user %>
+        <td>
+          <p><%= link_to "edit", edit_post_path(post.id) %></p>
+        </td>
+        <td>
+          <p><%= link_to 'delete', post_path(post.id), method: :delete ,data: { confirm: '削除していいですか？' } %></p>
+        </td>
+      <% else %>
+        <td></td>
+        <td></td>
+      <% end %>  
     </tr>
   <% end %>
 </table>

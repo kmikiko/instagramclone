@@ -7,12 +7,12 @@
   <tr>
     <td>
       <p><%= @user.name %></p>
-   </td>
+    </td>
   </tr>
   <tr> 
     <td>
       <p>メールアドレス: <%= @user.email %></p>
-   </td>
+    </td>
   </tr>
 </table>
 
@@ -20,6 +20,10 @@
         <tr>
           <td><%= link_to "home",posts_path %></td>
           <td><%= link_to "➕", new_post_path %></td>
-          <td><%= link_to "edit profile", edit_user_path %></td>
+          <% if @user == current_user %>
+            <td><%= link_to "edit profile", edit_user_path %></td>
+          <% else %>
+            <td></td>
+          <% end %>
         </tr>
 </table>
