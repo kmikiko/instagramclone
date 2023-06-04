@@ -18,6 +18,7 @@
 
 <table>
         <tr>
+          <td><%= link_to "お気に入り一覧",favorite_path %></td>
           <td><%= link_to "home",posts_path %></td>
           <td><%= link_to "➕", new_post_path %></td>
           <% if @user == current_user %>

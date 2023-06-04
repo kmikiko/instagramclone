@@ -4,7 +4,7 @@ class FavoritesController < ApplicationController
     redirect_to posts_path, notice: "#{favorite.post.user.name}さんの投稿をお気に入り登録しました"
   end
 
-  def index
+  def show
     @user = current_user
     @favorites = Favorite.where(user_id: @user.id).all
   end
